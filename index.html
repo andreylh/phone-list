@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html ng-app="phoneList">
+<head>
+
+	<title>Phone List</title>
+
+    <script src="lib/angular/angular.js"></script>
+	<!-- Bootstrap CSS -->
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <script>
+        angular.module("phoneList", []);
+        angular.module("phoneList").controller("phoneListCtrl", function($scope) {
+            $scope.app = "Phone List";
+            $scope.contacts = [
+                {name: "Pedro", phoneNumber: "88887777"},
+                {name: "Ana", phoneNumber: "88889999"},
+                {name: "Maria", phoneNumber: "55557777"}
+            ];
+
+            $scope.addContact = function() {
+                
+            };
+        });
+    </script>
+</head>
+<body ng-controller="phoneListCtrl">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center well">
+            <h3>{{app}}</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                    </tr>
+                    <tr ng-repeat="contact in contacts" class="text-left">
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.phoneNumber}}</td>
+                    <!-- Mesma coisa
+                        <td ng-repeat="(key,value) in contact">
+                            {{value}}
+                        </td>
+                    -->
+                    </tr>
+                </table>
+                <hr />
+                <form class="form">
+                    <div class="form-group">
+                        <input type="text" ng-model="name" class="form-control" placeholder="Name" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" ng-model="phoneNumber" class="form-control" placeholder="Phone Number" />
+                    </div>
+                    <button ng-click="addContact()" type="submit" class="btn btn-default">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
